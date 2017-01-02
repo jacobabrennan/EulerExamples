@@ -13,7 +13,6 @@
 //var initialTerms = [0,1];
 //var limit = 4000000;
 function fibonacciAt(N, fibonacciCache){
-    loops++;
     var cachedValue = fibonacciCache[N];
     if(cachedValue !== undefined){ return cachedValue;}
     var result = fibonacciAt(N-1, fibonacciCache)+fibonacciAt(N-2, fibonacciCache);
@@ -35,4 +34,4 @@ function fibonacciSum (initialTerms, limit){
     return sum;
 };
 var result = fibonacciSum([0,1], 4000000);
-console.log(result);
+//console.log(result);
