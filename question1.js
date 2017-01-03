@@ -6,7 +6,7 @@ Brute Force:
     if !(I%3) or !(I%5) add I to S*/
 
 module.exports = (function (){
-    var newQuestion = {//Object.create(require('./question.js');
+    var newQuestion = {
         eulerNumber: 1,
         compute: function (){
             return this.computeGeneral(1000, [3, 5]);

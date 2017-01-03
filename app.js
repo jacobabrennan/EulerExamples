@@ -1,16 +1,19 @@
 var questions = [
     require('./question1.js'),
     require('./question2.js'),
-    require('./question3.js')/*,
+    require('./question3.js'),
     require('./question4.js'),
-    require('./question5.js')*/
+    require('./question5.js')
 ];
 
 var test = {
     testAll: function (){
         if(this.answers.length){ /* error */}
         console.log(this.compare(questions[0]));
+        console.log(this.compare(questions[1]));
         console.log(this.compare(questions[2]));
+        console.log(this.compare(questions[3]));
+        console.log(this.compare(questions[4]));
     },
     //
     compare: function (questionAttempt){
@@ -56,5 +59,5 @@ var test = {
         });
         req.end();
     }
-}
+};
 test.compileAnswers();

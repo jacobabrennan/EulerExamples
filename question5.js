@@ -37,7 +37,12 @@ P(20) = [2,2,5];
  * The number with this prime factorization is: 232792560
  */
 
-function return232792560(){
-    return 232792560;
-}
-console.log(return232792560());
+module.exports = (function (){
+    var newQuestion = {
+        eulerNumber: 5,
+        compute: function (){
+            return 232792560;
+        }
+    }
+    return newQuestion;
+})();

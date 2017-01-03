@@ -19,31 +19,36 @@ This is further shortened by skipping tests where B > A for factors ending in 3,
     as these have already been tested due to symetry between factors.
 */
 
-var tests = 0;
-function isPalindrome(candidate){
-    tests++;
-    var numberString = candidate.toString();
-    return (
-        numberString.charAt(1) == numberString.charAt(4) &&
-        numberString.charAt(2) == numberString.charAt(3)
-    );
-}
-function findPalindrome(){
-    for(var digit1 = 9; digit1 >= 0; digit1--){
-        for(var digit2 = 9; digit2 >= 0; digit2--){
-            var candidate1 = (909+digit1*10) * (901+digit2*10);
-            if(isPalindrome(candidate1)){
-                return candidate1;
+
+module.exports = (function (){
+    var newQuestion = {
+        eulerNumber: 4,
+        compute: function (){
+            for(var digit1 = 9; digit1 >= 0; digit1--){
+                for(var digit2 = 9; digit2 >= 0; digit2--){
+                    var candidate1 = (909+digit1*10) * (901+digit2*10);
+                    if(this.isPalindrome(candidate1)){
+                        return candidate1;
+                    }
+                    if(digit2 > digit1){ //don't test candidate 2;
+                        continue;
+                    }
+                    var candidate2 = (903+digit1*10)*(903+digit2*10);
+                    if(this.isPalindrome(candidate2)){
+                        return candidate2;
+                    }
+                }
             }
-            if(digit2 > digit1){ //don't test candidate 2;
-                continue;
-            }
-            var candidate2 = (903+digit1*10)*(903+digit2*10);
-            if(isPalindrome(candidate2)){
-                return candidate2;
-            }
+            return undefined;
+        },
+        //
+        isPalindrome: function (candidate){
+            var numberString = candidate.toString();
+            return (
+                numberString.charAt(1) == numberString.charAt(4) &&
+                numberString.charAt(2) == numberString.charAt(3)
+            );
         }
     }
-    return undefined;
-};
-console.log(findPalindrome(), tests);
+    return newQuestion;
+})();

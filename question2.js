@@ -12,26 +12,36 @@
 
 //var initialTerms = [0,1];
 //var limit = 4000000;
-function fibonacciAt(N, fibonacciCache){
-    var cachedValue = fibonacciCache[N];
-    if(cachedValue !== undefined){ return cachedValue;}
-    var result = fibonacciAt(N-1, fibonacciCache)+fibonacciAt(N-2, fibonacciCache);
-    fibonacciCache[N] = result;
-    return result;
-}
-function fibonacciSum (initialTerms, limit){
-    var sum = 0;
-    var fibonacciCache = initialTerms;
-    var fValue;
-    do{
-        fValue = fibonacciAt(fibonacciCache.length, fibonacciCache);
-    } while(fValue <= limit);
-    fibonacciCache.forEach(function (element){
-        if(!(element%2)){
-            sum += element
+
+module.exports = (function (){
+    var newQuestion = {
+        eulerNumber: 2,
+        compute: function (){
+            return this.fibonacciSum([0,1], 4000000);
+        },
+        //
+        fibonacciAt: function (N, fibonacciCache){
+            if(N < 0){ return 0;}
+            var cachedValue = fibonacciCache[N];
+            if(cachedValue !== undefined){ return cachedValue;}
+            var result = this.fibonacciAt(N-1, fibonacciCache) + this.fibonacciAt(N-2, fibonacciCache);
+            fibonacciCache[N] = result;
+            return result;
+        },
+        fibonacciSum: function (initialTerms, limit){
+            var sum = 0;
+            var fibonacciCache = initialTerms;
+            var fValue;
+            do{
+                fValue = this.fibonacciAt(fibonacciCache.length, fibonacciCache);
+            } while(fValue <= limit);
+            fibonacciCache.forEach(function (element){
+                if(!(element%2)){
+                    sum += element
+                }
+            });
+            return sum;
         }
-    });
-    return sum;
-};
-var result = fibonacciSum([0,1], 4000000);
-//console.log(result);
+    };
+    return newQuestion;
+})();
