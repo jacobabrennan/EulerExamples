@@ -1,6 +1,6 @@
 module.exports = require('./question.js')({
     eulerNumber: 1,
-    questionText: 'Find the sum of all the [natural number] multiples of 3 or 5 below 1000.',
+    questionText: 'Find the sum of all the multiples of 3 or 5 below 1000.',
     strategy:
 `Brute Force:
 set sum S to zero

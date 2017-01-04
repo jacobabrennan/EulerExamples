@@ -1,13 +1,35 @@
 module.exports = (function (){
     var test = {
-        runTests: function (questions){
-            this.compileAnswers(function (){
-                if(test.answers.length){ /* error */}
+        runTests: function (questions, callback){
+            console.log('==== STARTING TESTS ====')
+            var totalTests = 0;
+            var failedTests = 0;
+            var iterator = function (){
                 questions.forEach(function (question){
+                    totalTests++;
                     var expectedValue = test.getAnswer(question.eulerNumber);
-                    console.log(question.test(expectedValue), question.eulerNumber);
+                    var success = question.test(expectedValue);
+                    if(success){
+                        console.log('Test '+question.eulerNumber+': passed');
+                    } else{
+                        console.log('Test '+question.eulerNumber+': FAILED');
+                        failedTests++;
+                    }
                 });
-            });
+                console.log('Tests Passed: '+(totalTests-failedTests)+'/'+totalTests);
+                if(failedTests === 0){
+                    console.log('All Tests Passed.')
+                };
+                console.log('========================')
+                if(callback){ callback();}
+            };
+            if(!this.answers.length){
+                this.compileAnswers(function (){
+                    iterator();
+                });
+            } else{
+                iterator();
+            }
         },
         //
         answers: [],
@@ -60,5 +82,15 @@ module.exports = (function (){
             }
         }
     };
+    if(process.argv[2] === 'true'){
+        var questions = [
+            require('./question1.js'),
+            require('./question2.js'),
+            require('./question3.js'),
+            require('./question4.js'),
+            require('./question5.js')
+        ];
+        test.runTests(questions);
+    }
     return test;
 })();

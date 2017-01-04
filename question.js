@@ -3,10 +3,18 @@ module.exports = (function (){
         eulerNumber: NaN,
         questionText: '',
         strategy: '',
-        compute: function (){},
         //
+        compute: function (){},
         test: function (expectedValue){
             return (this.compute() === expectedValue);
+        },
+        pack: function (){
+            return {
+                eulerNumber: this.eulerNumber,
+                questionText: this.questionText,
+                strategy: this.strategy,
+                answer: this.compute()
+            }
         }
     }
     return function (questionBlueprint){

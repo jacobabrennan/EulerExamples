@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="oilerClient">
+<head>
+    <meta charset='utf-8'>
+    <title>Project Oiler</title>
+    <link rel="stylesheet" href="rsc/css/grey.css">
+</head>
+<body ng-controller="clientController as client">
+    <div class="oiler_wrapper">
+        <h1>Project Euler Answers</h1>
+        <div id="euler_question">
+            <span class="label">Select a Question: </span>
+            <input type="number" ng-model="client.questionNumber" ng-change="client.loadQuestion();">
+            <hr>
+            <span class="label">Question Text:</span><br>
+            <pre class="text_dump" ng-model="client.questionText">{{client.questionText}}</pre>
+            <hr>
+            <span class="label">Answer:</span>
+            <pre class="text_dump">{{client.answer}}</pre>
+            <hr>
+            <span class="label">Strategy:</span>
+            <pre class="text_dump" ng-model="client.strategy">{{client.strategy}}</pre>
+        </div>
+    </div>
+<!-- Libraries and Scripts -->
+    <script src="rsc/js/angular.min.js"></script>
+    <script src="rsc/js/oilerClient.js"></script>
+</body>
+</html>

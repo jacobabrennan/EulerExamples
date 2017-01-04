@@ -1,6 +1,6 @@
 module.exports = require('./question.js')({
     eulerNumber: 4,
-    questionText: 'Question: Find the largest palindrome made from the product of two 3-digit numbers.',
+    questionText: 'Find the largest palindrome made from the product of two 3-digit numbers.',
     strategy:
 `Conjecture:
 The largest 3-digit number is 999. 1000000 > 999^2 > 900000.

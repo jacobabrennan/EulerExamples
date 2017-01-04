@@ -4,7 +4,7 @@
   "description": "A collection of Project Euler Answers",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js true"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/jacobabrennan/EulerExamples/issues"
   },
-  "homepage": "https://github.com/jacobabrennan/EulerExamples#readme"
+  "homepage": "https://github.com/jacobabrennan/EulerExamples#readme",
+  "dependencies": {
+    "connect": "^3.5.0",
+    "serve-static": "^1.11.1"
+  }
 }
