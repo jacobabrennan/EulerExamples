@@ -1,6 +1,8 @@
 module.exports = require('./question.js')({
     eulerNumber: 4,
     questionText: 'Find the largest palindrome made from the product of two 3-digit numbers.',
+    // Note that ` defines the start and end of a template literal.
+    // Template literals spuriously display as malformed in some editors.
     strategy:
 `Conjecture:
 The largest 3-digit number is 999. 1000000 > 999^2 > 900000.
@@ -16,6 +18,10 @@ This is further shortened by skipping tests where B > A for factors ending in 3,
 as these have already been tested due to symetry between factors.`,
     //
     compute: function (){
+        // compute iterates over the possible factors, as described in the
+        //     strategy above, and checks if their product is a palindrome.
+        // Because it works from the max possible value down, the first
+        //     palindrome found is the max possible.
         for(var digit1 = 9; digit1 >= 0; digit1--){
             for(var digit2 = 9; digit2 >= 0; digit2--){
                 var candidate1 = (909+digit1*10) * (901+digit2*10);
@@ -35,6 +41,10 @@ as these have already been tested due to symetry between factors.`,
     },
     //
     isPalindrome: function (candidate){
+        // isPalindrome assumes a 6 digit candidate number,
+        //     beginning and ending with the digit 9.
+        // It checks to see if the 2nd and 5th digit match,
+        //     and if the 3rd and 4th digit match.
         var numberString = candidate.toString();
         return (
             numberString.charAt(1) == numberString.charAt(4) &&
